@@ -1,0 +1,10 @@
+services:
+  # LocalRAG - Your app (connects to host Ollama)
+  localrag:
+    build: .
+    container_name: localrag
+    network_mode: "host"
+    volumes:
+      - ./documents:/app/documents
+    command: ["--port", "8080", "--docs", "/app/documents", "--ollama", "http://127.0.0.1:11434", "--llm-model", "tinyllama"]
+

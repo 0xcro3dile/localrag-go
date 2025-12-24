@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalRAG</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LocalRAG</h1>
+            <p class="subtitle">100% private · Zero cloud · Your docs, your data</p>
+        </header>
+        
+        <main>
+            <div id="chat-container">
+                <div id="messages"></div>
+            </div>
+            
+            <form id="query-form" hx-post="/api/query" hx-target="#messages" hx-swap="beforeend">
+                <input type="text" name="query" placeholder="Ask about your documents..." autocomplete="off" required>
+                <button type="submit">Send</button>
+            </form>
+        </main>
+        
+        <footer>
+            <p>Drop PDFs in <code>./documents</code> folder to ingest</p>
+        </footer>
+    </div>
+</body>
+</html>
